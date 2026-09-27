@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Search Items | CloudCraft Lost & Found
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+     ========================================================= -->
+
+<header class="navbar">
+
+    <div class="navbar-container">
+
+        <a
+            href="/"
+            class="logo"
+        >
+            <span class="logo-icon">☁</span>
+            <span>CloudCraft</span>
+        </a>
+
+
+        <nav>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="/">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="/search.html"
+                        class="active"
+                    >
+                        Search Items
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/report.html">
+                        Report Item
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/login.html">
+                        Admin
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     PAGE HEADER
+     ========================================================= -->
+
+<section class="page-header">
+
+    <div class="container">
+
+        <p
+            style="
+                color:#2563eb;
+                font-weight:800;
+                font-size:13px;
+                letter-spacing:1px;
+                margin-bottom:10px;
+            "
+        >
+            SEARCH PORTAL
+        </p>
+
+
+        <h1>
+            Find Lost &amp; Found Items
+        </h1>
+
+
+        <p>
+            Search approved reports and discover items
+            that may match what you're looking for.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SEARCH SECTION
+     ========================================================= -->
+
+<main class="search-section">
+
+    <div class="container">
+
+
+        <!-- SEARCH PANEL -->
+
+        <section class="search-panel">
+
+            <div
+                style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:space-between;
+                    gap:20px;
+                    margin-bottom:20px;
+                "
+            >
+
+                <div>
+
+                    <h2
+                        style="
+                            color:#0f172a;
+                            font-size:21px;
+                            margin-bottom:3px;
+                        "
+                    >
+                        Search &amp; Filter
+                    </h2>
+
+                    <p
+                        style="
+                            color:#64748b;
+                            font-size:13px;
+                        "
+                    >
+                        Find an item using keywords,
+                        type, category or location.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="search-filters">
+
+
+                <!-- KEYWORD -->
+
+                <div>
+
+                    <label
+                        for="searchInput"
+                        style="
+                            display:block;
+                            font-size:13px;
+                            font-weight:700;
+                            color:#334155;
+                            margin-bottom:7px;
+                        "
+                    >
+                        Search
+                    </label>
+
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Title, description or location..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+
+                <!-- TYPE -->
+
+                <div>
+
+                    <label
+                        for="typeFilter"
+                        style="
+                            display:block;
+                            font-size:13px;
+                            font-weight:700;
+                            color:#334155;
+                            margin-bottom:7px;
+                        "
+                    >
+                        Type
+                    </label>
+
+                    <select id="typeFilter">
+
+                        <option value="">
+                            All Items
+                        </option>
+
+                        <option value="lost">
+                            Lost Items
+                        </option>
+
+                        <option value="found">
+                            Found Items
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- CATEGORY -->
+
+                <div>
+
+                    <label
+                        for="categoryFilter"
+                        style="
+                            display:block;
+                            font-size:13px;
+                            font-weight:700;
+                            color:#334155;
+                            margin-bottom:7px;
+                        "
+                    >
+                        Category
+                    </label>
+
+                    <select id="categoryFilter">
+
+                        <option value="">
+                            All Categories
+                        </option>
+
+                        <option value="Electronics">
+                            Electronics
+                        </option>
+
+                        <option value="Documents">
+                            Documents
+                        </option>
+
+                        <option value="Wallet">
+                            Wallet
+                        </option>
+
+                        <option value="Keys">
+                            Keys
+                        </option>
+
+                        <option value="Clothing">
+                            Clothing
+                        </option>
+
+                        <option value="Bags">
+                            Bags
+                        </option>
+
+                        <option value="Jewelry">
+                            Jewelry
+                        </option>
+
+                        <option value="Books">
+                            Books
+                        </option>
+
+                        <option value="Accessories">
+                            Accessories
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- LOCATION -->
+
+                <div>
+
+                    <label
+                        for="locationFilter"
+                        style="
+                            display:block;
+                            font-size:13px;
+                            font-weight:700;
+                            color:#334155;
+                            margin-bottom:7px;
+                        "
+                    >
+                        Location
+                    </label>
+
+                    <input
+                        type="search"
+                        id="locationFilter"
+                        placeholder="Example: Chennai"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ACTIONS -->
+
+            <div class="search-actions">
+
+                <button
+                    type="button"
+                    id="searchBtn"
+                    class="btn btn-primary"
+                >
+                    Search Items
+                </button>
+
+
+                <button
+                    type="button"
+                    id="clearSearchBtn"
+                    class="btn btn-secondary"
+                >
+                    Clear Filters
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RESULTS HEADER
+             ================================================= -->
+
+        <section class="results-header">
+
+            <div>
+
+                <p
+                    style="
+                        color:#2563eb;
+                        font-size:12px;
+                        font-weight:800;
+                        letter-spacing:1px;
+                        margin-bottom:3px;
+                    "
+                >
+                    RESULTS
+                </p>
+
+                <h2>
+                    Available Items
+                </h2>
+
+                <p
+                    id="resultsCount"
+                    class="results-count"
+                >
+                    Loading items...
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LOADING
+             ================================================= -->
+
+        <div
+            id="searchLoading"
+            class="loading"
+        >
+
+            <span class="spinner"></span>
+
+            Loading approved items...
+
+        </div>
+
+
+
+        <!-- =================================================
+             ITEM GRID
+             ================================================= -->
+
+        <div
+            id="itemGrid"
+            class="item-grid"
+        ></div>
+
+
+
+        <!-- =================================================
+             EMPTY STATE
+             ================================================= -->
+
+        <div
+            id="emptyState"
+            class="empty-state"
+            style="display:none;"
+        >
+
+            <div
+                style="
+                    font-size:42px;
+                    margin-bottom:12px;
+                "
+            >
+                🔎
+            </div>
+
+            <h3>
+                No matching items found
+            </h3>
+
+            <p>
+                Try changing your search keywords
+                or filters.
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     ITEM DETAILS MODAL
+     ========================================================= -->
+
+<div
+    id="itemModal"
+    class="item-modal"
+    aria-hidden="true"
+>
+
+    <div
+        class="item-modal-overlay"
+        id="itemModalOverlay"
+    ></div>
+
+
+    <div
+        class="item-modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalItemTitle"
+    >
+
+
+        <!-- CLOSE -->
+
+        <button
+            type="button"
+            id="closeItemModal"
+            class="modal-close"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+
+
+        <!-- IMAGE -->
+
+        <div class="modal-image-wrapper">
+
+            <img
+                id="modalItemImage"
+                src=""
+                alt="Item image"
+            >
+
+        </div>
+
+
+
+        <!-- CONTENT -->
+
+        <div class="modal-content">
+
+
+            <div
+                id="modalItemType"
+                class="item-type"
+            >
+                LOST
+            </div>
+
+
+            <h2
+                id="modalItemTitle"
+            >
+                Item title
+            </h2>
+
+
+            <p
+                id="modalItemDescription"
+                class="modal-description"
+            >
+                Item description
+            </p>
+
+
+
+            <!-- DETAILS -->
+
+            <div class="modal-details">
+
+
+                <div class="modal-detail">
+
+                    <span class="modal-detail-icon">
+                        📁
+                    </span>
+
+                    <div>
+
+                        <small>
+                            Category
+                        </small>
+
+                        <strong id="modalItemCategory">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="modal-detail">
+
+                    <span class="modal-detail-icon">
+                        📍
+                    </span>
+
+                    <div>
+
+                        <small>
+                            Location
+                        </small>
+
+                        <strong id="modalItemLocation">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="modal-detail">
+
+                    <span class="modal-detail-icon">
+                        📅
+                    </span>
+
+                    <div>
+
+                        <small>
+                            Date
+                        </small>
+
+                        <strong id="modalItemDate">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="modal-detail">
+
+                    <span class="modal-detail-icon">
+                        🎨
+                    </span>
+
+                    <div>
+
+                        <small>
+                            Color
+                        </small>
+
+                        <strong id="modalItemColor">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MATCH -->
+
+            <div
+                id="modalMatchBadge"
+                class="match-badge"
+                style="display:none;"
+            >
+                ✨ Possible match detected
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div class="contact-box">
+
+                <h3>
+                    Contact Information
+                </h3>
+
+
+                <div class="contact-row">
+
+                    <span>
+                        👤
+                    </span>
+
+                    <strong id="modalContactName">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div
+                    class="contact-row"
+                    id="modalContactEmailRow"
+                >
+
+                    <span>
+                        ✉️
+                    </span>
+
+                    <span id="modalContactEmail">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="contact-row"
+                    id="modalContactPhoneRow"
+                >
+
+                    <span>
+                        📞
+                    </span>
+
+                    <span id="modalContactPhone">
+                        -
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <p class="modal-security">
+
+                🔐 Contact details are shown only for
+                approved lost &amp; found reports.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer>
+
+    <strong>
+        ☁ CloudCraft
+    </strong>
+
+    <p>
+        AWS Powered Lost &amp; Found Portal
+    </p>
+
+    <p>
+        © 2026 CloudCraft. All rights reserved.
+    </p>
+
+    <p>
+        Built using AWS EC2 · S3 · DynamoDB
+    </p>
+
+</footer>
+
+
+
+<script src="/js/app.js"></script>
+
+</body>
+
+</html>

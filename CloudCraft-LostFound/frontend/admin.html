@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | CloudCraft Lost & Found</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar">
+
+    <div class="navbar-container">
+
+        <a href="/index.html" class="logo">
+            <span class="logo-icon">☁</span>
+            <span>CloudCraft</span>
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="/index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="/search.html">Search Items</a>
+            </li>
+
+            <li>
+                <a href="/report.html">Report Item</a>
+            </li>
+
+            <li>
+                <a href="/admin.html" class="active">Admin</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="admin-page">
+
+    <!-- HEADER -->
+
+    <section class="page-header admin-header">
+
+        <div>
+
+            <span class="admin-badge">
+                🔐 ADMIN CONTROL CENTER
+            </span>
+
+            <h1>
+                Lost & Found Dashboard
+            </h1>
+
+            <p>
+                Manage reports, moderate submissions and monitor
+                the CloudCraft Lost & Found platform.
+            </p>
+
+        </div>
+
+        <div class="admin-header-actions">
+
+            <button
+                id="refreshAdminBtn"
+                class="btn btn-secondary"
+                type="button"
+            >
+                ↻ Refresh
+            </button>
+
+            <button
+                id="logoutBtn"
+                class="btn btn-danger"
+                type="button"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         STATISTICS
+    ====================================================== -->
+
+    <section class="admin-stats">
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon blue">
+                📦
+            </div>
+
+            <div>
+                <span>Total Reports</span>
+                <strong id="totalItems">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon orange">
+                ⏳
+            </div>
+
+            <div>
+                <span>Pending Review</span>
+                <strong id="pendingItems">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon green">
+                ✓
+            </div>
+
+            <div>
+                <span>Approved</span>
+                <strong id="approvedItems">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon red">
+                ✕
+            </div>
+
+            <div>
+                <span>Rejected</span>
+                <strong id="rejectedItems">0</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MESSAGE
+    ====================================================== -->
+
+    <div
+        id="adminMessage"
+        class="message"
+        style="display:none;"
+    ></div>
+
+
+    <!-- =====================================================
+         FILTER PANEL
+    ====================================================== -->
+
+    <section class="admin-control-card">
+
+        <div class="admin-control-header">
+
+            <div>
+
+                <h2>
+                    Manage Reports
+                </h2>
+
+                <p>
+                    Search and filter submitted lost & found reports.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-filters">
+
+            <div class="admin-filter-group">
+
+                <label for="adminSearchInput">
+                    Search
+                </label>
+
+                <input
+                    type="text"
+                    id="adminSearchInput"
+                    placeholder="Search title, category, location..."
+                >
+
+            </div>
+
+
+            <div class="admin-filter-group">
+
+                <label for="adminStatusFilter">
+                    Status
+                </label>
+
+                <select id="adminStatusFilter">
+
+                    <option value="all">
+                        All Status
+                    </option>
+
+                    <option value="pending">
+                        Pending
+                    </option>
+
+                    <option value="approved">
+                        Approved
+                    </option>
+
+                    <option value="rejected">
+                        Rejected
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="admin-filter-group">
+
+                <label for="adminTypeFilter">
+                    Type
+                </label>
+
+                <select id="adminTypeFilter">
+
+                    <option value="all">
+                        All Types
+                    </option>
+
+                    <option value="lost">
+                        Lost
+                    </option>
+
+                    <option value="found">
+                        Found
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="admin-filter-actions">
+
+                <button
+                    class="btn btn-secondary"
+                    type="button"
+                    onclick="applyAdminFilters()"
+                >
+                    Apply Filters
+                </button>
+
+                <button
+                    class="btn btn-light"
+                    type="button"
+                    onclick="clearAdminFilters()"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TABLE
+    ====================================================== -->
+
+    <section class="admin-table-card">
+
+        <div class="admin-table-header">
+
+            <div>
+
+                <h2>
+                    Submitted Items
+                </h2>
+
+                <p>
+                    Review and manage all reports.
+                </p>
+
+            </div>
+
+            <span
+                id="adminResultCount"
+                class="admin-result-count"
+            >
+                0 items
+            </span>
+
+        </div>
+
+
+        <!-- LOADING -->
+
+        <div
+            id="adminLoading"
+            class="loading"
+            style="display:none;"
+        >
+            <div class="loading-spinner"></div>
+            <p>Loading reports...</p>
+        </div>
+
+
+        <!-- EMPTY -->
+
+        <div
+            id="adminEmpty"
+            class="admin-empty"
+            style="display:none;"
+        >
+
+            <div class="admin-empty-icon">
+                📋
+            </div>
+
+            <h3>
+                No reports found
+            </h3>
+
+            <p>
+                There are no reports matching the selected filters.
+            </p>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="admin-table-wrapper">
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Item
+                        </th>
+
+                        <th>
+                            Type
+                        </th>
+
+                        <th>
+                            Category
+                        </th>
+
+                        <th>
+                            Location
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Match
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="adminItemsTable">
+
+                    <!-- JavaScript inserts reports here -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SECURITY CARD
+    ====================================================== -->
+
+    <section class="admin-security-card">
+
+        <div class="admin-security-icon">
+            🛡️
+        </div>
+
+        <div>
+
+            <h3>
+                CloudCraft Security
+            </h3>
+
+            <p>
+                Admin actions are protected by the CloudCraft
+                administrator authentication system. Approved
+                reports are displayed on the public search portal,
+                while pending and rejected reports remain hidden.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div>
+
+            <strong>
+                ☁ CloudCraft Lost & Found
+            </strong>
+
+            <p>
+                AWS-powered campus lost & found platform.
+            </p>
+
+        </div>
+
+        <div>
+
+            <span>
+                S3 • DynamoDB • EC2
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        © 2026 CloudCraft Team. All rights reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="/js/app.js"></script>
+
+</body>
+</html>

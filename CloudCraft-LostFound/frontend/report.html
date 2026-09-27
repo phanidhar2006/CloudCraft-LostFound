@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Item | CloudCraft Lost & Found</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+    <div class="navbar-container">
+
+        <a href="/index.html" class="logo">
+            <span class="logo-mark">CC</span>
+            <span class="logo-text">
+                <strong>CloudCraft</strong>
+                <small>Lost & Found</small>
+            </span>
+        </a>
+
+        <ul class="nav-links">
+            <li>
+                <a href="/index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="/search.html">Search Items</a>
+            </li>
+
+            <li>
+                <a href="/report.html" class="active">Report Item</a>
+            </li>
+
+            <li>
+                <a href="/login.html">Admin</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- ================= PAGE HEADER ================= -->
+
+<main>
+
+<section class="page-hero">
+
+    <div class="page-hero-content">
+
+        <span class="section-badge">
+            📋 REPORT AN ITEM
+        </span>
+
+        <h1>
+            Help Someone Find<br>
+            <span>What They Lost</span>
+        </h1>
+
+        <p>
+            Submit details about a lost or found item.
+            Your information will be securely stored and
+            reviewed by the CloudCraft moderation team.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= REPORT SECTION ================= -->
+
+<section class="report-section">
+
+    <div class="report-container">
+
+        <!-- LEFT INFORMATION PANEL -->
+
+        <div class="report-info">
+
+            <div class="report-info-badge">
+                ☁️ AWS SECURED
+            </div>
+
+            <h2>
+                Reporting an item<br>
+                takes less than a minute.
+            </h2>
+
+            <p>
+                Provide accurate information and, if possible,
+                upload a clear photograph. This helps others
+                identify and recover the item faster.
+            </p>
+
+
+            <div class="report-benefits">
+
+                <div class="report-benefit">
+
+                    <div class="report-benefit-icon">
+                        📦
+                    </div>
+
+                    <div>
+                        <strong>Secure Item Records</strong>
+                        <span>
+                            Details are securely stored in
+                            Amazon DynamoDB.
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="report-benefit">
+
+                    <div class="report-benefit-icon">
+                        🖼️
+                    </div>
+
+                    <div>
+                        <strong>Secure Photo Storage</strong>
+                        <span>
+                            Uploaded images are stored
+                            securely in Amazon S3.
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="report-benefit">
+
+                    <div class="report-benefit-icon">
+                        🔎
+                    </div>
+
+                    <div>
+                        <strong>Possible Match Detection</strong>
+                        <span>
+                            The system checks submitted items
+                            for possible matches.
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="report-benefit">
+
+                    <div class="report-benefit-icon">
+                        🛡️
+                    </div>
+
+                    <div>
+                        <strong>Moderated Platform</strong>
+                        <span>
+                            Submitted items are reviewed before
+                            appearing publicly.
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT FORM -->
+
+        <div class="report-card">
+
+            <div class="report-card-header">
+
+                <div>
+                    <span class="report-card-label">
+                        ITEM INFORMATION
+                    </span>
+
+                    <h2>Report Lost or Found Item</h2>
+
+                    <p>
+                        Fill in the details below.
+                    </p>
+                </div>
+
+                <div class="report-card-icon">
+                    📋
+                </div>
+
+            </div>
+
+
+            <form id="reportForm" enctype="multipart/form-data">
+
+                <!-- TYPE -->
+
+                <div class="form-group">
+
+                    <label for="type">
+                        Item Type <span>*</span>
+                    </label>
+
+                    <select id="type" name="type" required>
+
+                        <option value="">
+                            Select item type
+                        </option>
+
+                        <option value="Lost">
+                            Lost Item
+                        </option>
+
+                        <option value="Found">
+                            Found Item
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- TITLE -->
+
+                <div class="form-group">
+
+                    <label for="title">
+                        Item Title <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="Example: Black Samsung Galaxy Phone"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CATEGORY + COLOR -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="category">
+                            Category <span>*</span>
+                        </label>
+
+                        <select id="category" name="category" required>
+
+                            <option value="">
+                                Select category
+                            </option>
+
+                            <option value="Electronics">
+                                Electronics
+                            </option>
+
+                            <option value="Documents">
+                                Documents
+                            </option>
+
+                            <option value="Wallet">
+                                Wallet
+                            </option>
+
+                            <option value="Keys">
+                                Keys
+                            </option>
+
+                            <option value="Bag">
+                                Bag
+                            </option>
+
+                            <option value="Clothing">
+                                Clothing
+                            </option>
+
+                            <option value="Jewellery">
+                                Jewellery
+                            </option>
+
+                            <option value="Books">
+                                Books
+                            </option>
+
+                            <option value="Accessories">
+                                Accessories
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="color">
+                            Color
+                        </label>
+
+                        <input
+                            type="text"
+                            id="color"
+                            name="color"
+                            placeholder="Example: Black"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- LOCATION -->
+
+                <div class="form-group">
+
+                    <label for="location">
+                        Location <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        placeholder="Example: Sathyabama University Library"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DATE -->
+
+                <div class="form-group">
+
+                    <label for="date">
+                        Date <span>*</span>
+                    </label>
+
+                    <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Description <span>*</span>
+                    </label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="5"
+                        placeholder="Describe the item, where it was lost/found, identifying marks, etc."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- CONTACT -->
+
+                <div class="form-section-title">
+                    CONTACT INFORMATION
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="contactName">
+                        Your Name <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="contactName"
+                        name="contactName"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="contactEmail">
+                            Email <span>*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="contactEmail"
+                            name="contactEmail"
+                            placeholder="you@example.com"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="contactPhone">
+                            Phone
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="contactPhone"
+                            name="contactPhone"
+                            placeholder="10-digit number"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE -->
+
+                <div class="form-section-title">
+                    ITEM PHOTO
+                </div>
+
+
+                <div class="upload-box">
+
+                    <label for="image" class="upload-label">
+
+                        <div class="upload-icon">
+                            📷
+                        </div>
+
+                        <strong>
+                            Upload Item Photo
+                        </strong>
+
+                        <span>
+                            PNG, JPG or JPEG · Recommended
+                        </span>
+
+                        <span class="upload-button">
+                            Choose Image
+                        </span>
+
+                    </label>
+
+                    <input
+                        type="file"
+                        id="image"
+                        name="image"
+                        accept="image/png,image/jpeg,image/jpg"
+                    >
+
+                    <div id="imagePreview" class="image-preview"></div>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="reportMessage"
+                    class="report-message"
+                ></div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    id="reportSubmitBtn"
+                    class="report-submit-btn"
+                >
+                    <span>Submit Report</span>
+                    <span>→</span>
+                </button>
+
+
+                <div class="report-security-note">
+                    🔒 Your information is securely processed using AWS services.
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+
+            <div class="footer-logo">
+                <span class="logo-mark">CC</span>
+
+                <span>
+                    <strong>CloudCraft</strong>
+                    <small>Lost & Found</small>
+                </span>
+            </div>
+
+            <p>
+                An AWS-powered platform designed to help
+                people report, discover and recover lost items.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="/index.html">Home</a>
+            <a href="/search.html">Search</a>
+            <a href="/report.html">Report Item</a>
+            <a href="/login.html">Admin</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 CloudCraft Lost & Found
+        </span>
+
+        <span>
+            Powered by AWS ☁️
+        </span>
+
+    </div>
+
+</footer>
+
+
+<script src="/js/app.js"></script>
+
+
+<!-- ================= IMAGE PREVIEW ================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const imageInput = document.getElementById("image");
+    const preview = document.getElementById("imagePreview");
+
+    if (!imageInput || !preview) {
+        return;
+    }
+
+    imageInput.addEventListener("change", function () {
+
+        preview.innerHTML = "";
+
+        const file = imageInput.files[0];
+
+        if (!file) {
+            return;
+        }
+
+        if (!file.type.startsWith("image/")) {
+            preview.innerHTML =
+                "<span>⚠️ Please select an image file.</span>";
+
+            imageInput.value = "";
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+
+            preview.innerHTML = `
+                <div class="preview-wrapper">
+
+                    <img
+                        src="${event.target.result}"
+                        alt="Selected item photo"
+                    >
+
+                    <div class="preview-info">
+                        <strong>${file.name}</strong>
+                        <span>
+                            ${(file.size / 1024 / 1024).toFixed(2)} MB
+                        </span>
+                    </div>
+
+                </div>
+            `;
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

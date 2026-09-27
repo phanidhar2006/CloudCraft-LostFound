@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CloudCraft | Lost & Found Portal</title>
+
+    <meta
+        name="description"
+        content="CloudCraft Lost & Found Portal - A smart AWS-powered platform for reporting, searching and recovering lost items."
+    >
+
+    <style>
+
+        /* =====================================================
+           CLOUDCRAFT - MASTER HOME PAGE
+           ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            color: #0f172a;
+            background: #f8fafc;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+           ===================================================== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(255,255,255,0.96);
+
+            backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .nav-container {
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding: 17px 28px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+            color: #0f172a;
+        }
+
+        .logo-icon {
+            font-size: 27px;
+        }
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #475569;
+
+            font-size: 15px;
+
+            font-weight: 650;
+
+            transition: 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .nav-admin {
+            padding: 9px 15px;
+
+            border: 1px solid #dbeafe;
+
+            border-radius: 9px;
+
+            color: #2563eb !important;
+
+            background: #eff6ff;
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+
+        .hero {
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    #dbeafe 0,
+                    transparent 32%
+                ),
+                linear-gradient(
+                    135deg,
+                    #ffffff 0%,
+                    #f8fbff 55%,
+                    #eff6ff 100%
+                );
+        }
+
+        .hero-container {
+            max-width: 1250px;
+
+            margin: auto;
+
+            min-height: 650px;
+
+            padding: 80px 28px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.15fr
+                0.85fr;
+
+            align-items: center;
+
+            gap: 50px;
+        }
+
+        .hero-content {
+            max-width: 680px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 8px 13px;
+
+            border-radius: 30px;
+
+            background: #eff6ff;
+
+            border: 1px solid #dbeafe;
+
+            color: #2563eb;
+
+            font-size: 13px;
+
+            font-weight: 750;
+
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 70px);
+
+            line-height: 1.04;
+
+            letter-spacing: -3px;
+
+            color: #0f172a;
+
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero-description {
+            max-width: 610px;
+
+            color: #64748b;
+
+            font-size: 18px;
+
+            line-height: 1.75;
+
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 13px;
+        }
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 50px;
+
+            padding: 0 23px;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+
+            font-weight: 750;
+
+            transition: 0.2s ease;
+        }
+
+        .btn-primary {
+            color: #ffffff;
+
+            background: #2563eb;
+
+            box-shadow:
+                0 10px 25px
+                rgba(37,99,235,0.20);
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            color: #0f172a;
+
+            background: #ffffff;
+
+            border: 1px solid #dbe2ea;
+        }
+
+        .btn-secondary:hover {
+            color: #2563eb;
+
+            border-color: #bfdbfe;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           HERO VISUAL
+           ===================================================== */
+
+        .hero-visual {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+        .cloud-card {
+            position: relative;
+
+            width: min(100%, 430px);
+
+            min-height: 400px;
+
+            padding: 32px;
+
+            border-radius: 28px;
+
+            background: rgba(255,255,255,0.86);
+
+            border: 1px solid #dbeafe;
+
+            box-shadow:
+                0 30px 80px
+                rgba(30,64,175,0.13);
+        }
+
+        .cloud-main-icon {
+            width: 100px;
+
+            height: 100px;
+
+            margin: 30px auto 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 28px;
+
+            background: #eff6ff;
+
+            font-size: 52px;
+
+            box-shadow:
+                0 15px 35px
+                rgba(37,99,235,0.10);
+        }
+
+        .cloud-card h2 {
+            text-align: center;
+
+            font-size: 28px;
+
+            color: #0f172a;
+
+            margin-bottom: 8px;
+        }
+
+        .cloud-card > p {
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+        }
+
+        .mini-stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 10px;
+        }
+
+        .mini-stat {
+            padding: 15px 8px;
+
+            text-align: center;
+
+            background: #f8fafc;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 12px;
+        }
+
+        .mini-stat strong {
+            display: block;
+
+            color: #2563eb;
+
+            font-size: 19px;
+        }
+
+        .mini-stat span {
+            color: #64748b;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           TRUST BAR
+           ===================================================== */
+
+        .trust-bar {
+            background: #0f172a;
+
+            color: #ffffff;
+        }
+
+        .trust-container {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 25px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 20px;
+
+            text-align: center;
+        }
+
+        .trust-item strong {
+            display: block;
+
+            font-size: 14px;
+
+            margin-bottom: 3px;
+        }
+
+        .trust-item span {
+            color: #94a3b8;
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           SECTION
+           ===================================================== */
+
+        .section {
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding: 90px 28px;
+        }
+
+        .section-heading {
+            max-width: 720px;
+
+            margin: 0 auto 45px;
+
+            text-align: center;
+        }
+
+        .section-label {
+            display: block;
+
+            color: #2563eb;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 9px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(30px,4vw,44px);
+
+            line-height: 1.15;
+
+            letter-spacing: -1.5px;
+
+            color: #0f172a;
+
+            margin-bottom: 13px;
+        }
+
+        .section-heading p {
+            color: #64748b;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           FEATURES
+           ===================================================== */
+
+        .features {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 18px;
+
+            padding: 30px;
+
+            transition: 0.25s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+
+            border-color: #bfdbfe;
+
+            box-shadow:
+                0 20px 45px
+                rgba(15,23,42,0.07);
+        }
+
+        .feature-icon {
+            width: 54px;
+
+            height: 54px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background: #eff6ff;
+
+            font-size: 25px;
+
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #0f172a;
+
+            font-size: 20px;
+
+            margin-bottom: 9px;
+        }
+
+        .feature-card p {
+            color: #64748b;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           HOW IT WORKS
+           ===================================================== */
+
+        .process-section {
+            background: #ffffff;
+
+            border-top: 1px solid #e2e8f0;
+
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .process {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 20px;
+        }
+
+        .process-card {
+            text-align: center;
+
+            padding: 20px;
+        }
+
+        .process-number {
+            width: 52px;
+
+            height: 52px;
+
+            margin: 0 auto 17px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #2563eb;
+
+            color: #ffffff;
+
+            font-size: 17px;
+
+            font-weight: 800;
+        }
+
+        .process-card h3 {
+            color: #0f172a;
+
+            font-size: 17px;
+
+            margin-bottom: 7px;
+        }
+
+        .process-card p {
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           AWS SECTION
+           ===================================================== */
+
+        .aws-section {
+            background:
+                linear-gradient(
+                    135deg,
+                    #eff6ff,
+                    #ffffff
+                );
+        }
+
+        .aws-box {
+            max-width: 1050px;
+
+            margin: auto;
+
+            padding: 45px;
+
+            background: #ffffff;
+
+            border: 1px solid #dbeafe;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 20px 55px
+                rgba(15,23,42,0.06);
+        }
+
+        .aws-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 18px;
+        }
+
+        .aws-item {
+            padding: 22px;
+
+            border-radius: 14px;
+
+            background: #f8fafc;
+
+            border: 1px solid #e2e8f0;
+        }
+
+        .aws-item strong {
+            display: block;
+
+            color: #0f172a;
+
+            font-size: 15px;
+
+            margin-bottom: 5px;
+        }
+
+        .aws-item span {
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           CTA
+           ===================================================== */
+
+        .cta {
+            max-width: 1100px;
+
+            margin: 0 auto 90px;
+
+            padding: 65px 35px;
+
+            border-radius: 25px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1d4ed8,
+                    #2563eb
+                );
+
+            color: #ffffff;
+
+            box-shadow:
+                0 25px 60px
+                rgba(37,99,235,0.22);
+        }
+
+        .cta h2 {
+            font-size: clamp(28px,4vw,42px);
+
+            line-height: 1.15;
+
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            max-width: 620px;
+
+            margin: 0 auto 25px;
+
+            color: #dbeafe;
+
+            font-size: 15px;
+        }
+
+        .cta .btn {
+            background: #ffffff;
+
+            color: #1d4ed8;
+        }
+
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+
+        footer {
+            background: #020617;
+
+            color: #cbd5e1;
+        }
+
+        .footer-container {
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding: 45px 28px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .footer-brand strong {
+            display: block;
+
+            color: #ffffff;
+
+            font-size: 19px;
+
+            margin-bottom: 6px;
+        }
+
+        .footer-brand p {
+            color: #94a3b8;
+
+            font-size: 13px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 24px;
+
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+
+            font-size: 13px;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            padding: 18px;
+
+            text-align: center;
+
+            border-top: 1px solid #1e293b;
+
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 950px) {
+
+            .hero-container {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+
+                padding-top: 65px;
+            }
+
+            .hero-content {
+                margin: auto;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                margin-top: 10px;
+            }
+
+            .features {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .process {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .aws-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .nav-container {
+                flex-direction: column;
+
+                gap: 14px;
+            }
+
+            .nav-links {
+                gap: 14px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .cloud-card {
+                min-height: 360px;
+            }
+
+            .trust-container {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .process {
+                grid-template-columns: 1fr;
+            }
+
+            .aws-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .aws-box {
+                padding: 25px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                gap: 15px;
+            }
+        }
+
+
+        @media (max-width: 450px) {
+
+            .nav-container {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .hero-container {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .mini-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+     ===================================================== -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="/" class="logo">
+
+            <span class="logo-icon">☁️</span>
+
+            <span>CloudCraft</span>
+
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/search.html">
+                Search Items
+            </a>
+
+            <a href="/report.html">
+                Report Item
+            </a>
+
+            <a href="/login.html" class="nav-admin">
+                Admin
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-container">
+
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+
+                ☁️ AWS Powered Lost & Found
+
+            </div>
+
+
+            <h1>
+
+                Find What's Lost.
+                <span>Return What's Found.</span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                CloudCraft is a smart Lost & Found Portal
+                that helps people report, discover and recover
+                lost belongings through a secure cloud-based
+                platform.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="/report.html"
+                    class="btn btn-primary"
+                >
+                    Report an Item →
+                </a>
+
+
+                <a
+                    href="/search.html"
+                    class="btn btn-secondary"
+                >
+                    Search Lost Items
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- HERO CARD -->
+
+        <div class="hero-visual">
+
+            <div class="cloud-card">
+
+                <div class="cloud-main-icon">
+                    ☁️
+                </div>
+
+
+                <h2>
+                    CloudCraft
+                </h2>
+
+
+                <p>
+                    Smart • Secure • Cloud Powered
+                </p>
+
+
+                <div class="mini-stats">
+
+                    <div class="mini-stat">
+
+                        <strong>24/7</strong>
+
+                        <span>
+                            Accessible
+                        </span>
+
+                    </div>
+
+
+                    <div class="mini-stat">
+
+                        <strong>AWS</strong>
+
+                        <span>
+                            Cloud
+                        </span>
+
+                    </div>
+
+
+                    <div class="mini-stat">
+
+                        <strong>AI</strong>
+
+                        <span>
+                            Matching
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TRUST BAR
+     ===================================================== -->
+
+<section class="trust-bar">
+
+    <div class="trust-container">
+
+        <div class="trust-item">
+
+            <strong>☁️ Amazon S3</strong>
+
+            <span>
+                Secure image storage
+            </span>
+
+        </div>
+
+
+        <div class="trust-item">
+
+            <strong>⚡ Amazon DynamoDB</strong>
+
+            <span>
+                Fast item records
+            </span>
+
+        </div>
+
+
+        <div class="trust-item">
+
+            <strong>🔐 Moderated Platform</strong>
+
+            <span>
+                Admin approval workflow
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURES
+     ===================================================== -->
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            PLATFORM FEATURES
+        </span>
+
+        <h2>
+            Everything needed to reunite lost belongings
+        </h2>
+
+        <p>
+            A complete digital workflow from reporting
+            an item to discovering a possible match.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                📱
+            </div>
+
+            <h3>
+                Easy Reporting
+            </h3>
+
+            <p>
+                Submit detailed lost or found item reports
+                with category, location, date, description
+                and photo.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                🔎
+            </div>
+
+            <h3>
+                Smart Search
+            </h3>
+
+            <p>
+                Search approved reports using keywords,
+                item type, category and location.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                🤝
+            </div>
+
+            <h3>
+                Possible Matching
+            </h3>
+
+            <p>
+                CloudCraft compares important item attributes
+                to identify potential lost-and-found matches.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                🖼️
+            </div>
+
+            <h3>
+                Secure Photos
+            </h3>
+
+            <p>
+                Item photos are stored in Amazon S3 and
+                delivered through secure temporary URLs.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                🛡️
+            </div>
+
+            <h3>
+                Admin Moderation
+            </h3>
+
+            <p>
+                Submitted reports remain pending until
+                an administrator reviews and approves them.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                ☁️
+            </div>
+
+            <h3>
+                AWS Cloud
+            </h3>
+
+            <p>
+                The platform is designed around AWS services
+                for scalable cloud-based deployment.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     HOW IT WORKS
+     ===================================================== -->
+
+<section class="process-section">
+
+    <div class="section">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                HOW IT WORKS
+            </span>
+
+            <h2>
+                Four simple steps
+            </h2>
+
+            <p>
+                From an item report to a possible recovery.
+            </p>
+
+        </div>
+
+
+        <div class="process">
+
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    1
+                </div>
+
+                <h3>
+                    Report
+                </h3>
+
+                <p>
+                    Submit details about a lost or found item.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    2
+                </div>
+
+                <h3>
+                    Review
+                </h3>
+
+                <p>
+                    An administrator checks the submission.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    3
+                </div>
+
+                <h3>
+                    Match
+                </h3>
+
+                <p>
+                    The system compares relevant item attributes.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    4
+                </div>
+
+                <h3>
+                    Recover
+                </h3>
+
+                <p>
+                    Users can discover approved matching reports.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     AWS ARCHITECTURE
+     ===================================================== -->
+
+<section class="section aws-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            AWS ARCHITECTURE
+        </span>
+
+        <h2>
+            Built for the cloud
+        </h2>
+
+        <p>
+            CloudCraft uses AWS services to separate
+            application hosting, image storage and data.
+        </p>
+
+    </div>
+
+
+    <div class="aws-box">
+
+        <div class="aws-grid">
+
+
+            <div class="aws-item">
+
+                <strong>
+                    Amazon EC2
+                </strong>
+
+                <span>
+                    Hosts the Flask web application.
+                </span>
+
+            </div>
+
+
+            <div class="aws-item">
+
+                <strong>
+                    Amazon S3
+                </strong>
+
+                <span>
+                    Stores uploaded item photographs.
+                </span>
+
+            </div>
+
+
+            <div class="aws-item">
+
+                <strong>
+                    Amazon DynamoDB
+                </strong>
+
+                <span>
+                    Stores structured lost-and-found records.
+                </span>
+
+            </div>
+
+
+            <div class="aws-item">
+
+                <strong>
+                    IAM
+                </strong>
+
+                <span>
+                    Controls access to AWS resources.
+                </span>
+
+            </div>
+
+
+            <div class="aws-item">
+
+                <strong>
+                    Presigned URLs
+                </strong>
+
+                <span>
+                    Provide temporary secure image access.
+                </span>
+
+            </div>
+
+
+            <div class="aws-item">
+
+                <strong>
+                    Moderation Workflow
+                </strong>
+
+                <span>
+                    Keeps unreviewed reports hidden.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+     ===================================================== -->
+
+<section class="cta">
+
+    <h2>
+        Lost something?
+    </h2>
+
+    <p>
+        Report it now or search the approved Lost & Found
+        records to see whether someone has already found it.
+    </p>
+
+
+    <div class="hero-buttons">
+
+        <a
+            href="/report.html"
+            class="btn"
+        >
+            Report an Item
+        </a>
+
+
+        <a
+            href="/search.html"
+            class="btn"
+        >
+            Search Items
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer>
+
+    <div class="footer-container">
+
+
+        <div class="footer-brand">
+
+            <strong>
+                ☁️ CloudCraft Lost & Found
+            </strong>
+
+            <p>
+                Smart AWS-powered Lost & Found Portal.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/search.html">
+                Search
+            </a>
+
+            <a href="/report.html">
+                Report
+            </a>
+
+            <a href="/login.html">
+                Admin
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 CloudCraft Lost & Found Portal.
+        Built with AWS Cloud Technology.
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
